@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
 
@@ -26,9 +27,15 @@ class CustomerController extends Controller
         return $customer;
     }
 
+    public function search($customerName)
+    {   
+        $customer = $this->customerRepository->findByName($customerName);
+        return $customer;
+    }
+
     public function destroy($customerId)
     {
-        $customer = $this->customerRepository->deleteById($customerId);
+        $this->customerRepository->deleteById($customerId);
         return redirect('/customers');
     }
 }

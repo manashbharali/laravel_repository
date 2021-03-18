@@ -14,9 +14,9 @@ class Customer extends Model
         return [
             'customer_id' => $this->id,
             'customer_name' => $this->name,
-            'customer_conatct' => $this->contact,
-            'created_by' => $this->user->email,
+            'customer_contact' => $this->contact,
             'created_at' => $this->created_at->diffForHumans(),
+            'created_by' => $this->user->email,
         ];
     }
 
@@ -24,4 +24,5 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 }
